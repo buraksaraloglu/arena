@@ -1,0 +1,280 @@
+$main-yellow: gold;
+
+$accent-color: #c81d25;
+$sec-accent-color: #0073cc;
+
+$g-light-body: #495057;
+
+$g-padding: 12px 20px;
+
+
+
+* {
+  &::selection {
+    color: $g-light-body;
+    background-color: $main-yellow;
+  }
+}
+
+body {
+  font-family: 'Roboto', 'Montserrat', 'Arial', sans-serif;
+  color: $g-light-body;
+  background: $color;
+}
+
+p {
+  margin: 0;
+}
+
+main {
+  height: 100vh;
+
+  .welcome-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+
+    &__logo {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+
+      h1 {
+        position: absolute;
+        bottom: 0;
+
+        padding: 1rem 2rem;
+
+        font-size: 3rem;
+        color: $main-yellow;
+        font-family: 'PressStart2P-Regular', sans-serif;
+        filter: drop-shadow(3px 3px 0 #916b03);
+        animation: MoveUpDown 2s ease-in-out infinite;
+
+        @media (max-width: 560px) {
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+
+    &__details {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem;
+      background: rgba(10, 10, 10, 0.7);
+      border-radius: 20px;
+      #usernameInput {
+        padding: 8px 12px 8px 0;
+        background: transparent;
+        color: white;
+        outline: 0;
+        border: 0;
+        border-bottom: 1px solid $g-light-body;
+
+        &::placeholder {
+          color: $g-light-body;
+        }
+      }
+
+      &__bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        margin-top: 2rem;
+
+        .c-button {
+          padding: $g-padding;
+          background: transparent;
+          border: 0;
+          color: inherit;
+          font-weight: 500;
+          font-size: 16px;
+          color: $main-yellow;
+          border: 1px solid $main-yellow;
+          transition: all 0.3s ease;
+
+          &:hover {
+            color: $color;
+            background: $main-yellow;
+
+          }
+
+          &:focus {
+            outline: 0;
+          }
+        }
+
+        .creategame-button {
+          border-color: $accent-color;
+          background-color: $accent-color;
+          color: white;
+          margin-top: 1rem;
+          border-radius: 4px;
+          width: 100%;
+
+          &:hover {
+            color: white;
+            background-color: darken($accent-color, 10%);
+          }
+
+          @media (max-width: 560px) {
+            font-size: 1.1rem;
+          }
+        }
+
+        .join-button {
+          padding: 8px 12px;
+          color: $sec-accent-color;
+          border: 1px solid;
+          border-radius: 4px;
+          border-color: $sec-accent-color;
+
+          &:hover {
+            background: $sec-accent-color;
+          }
+        }
+
+        .form-group {
+          margin-bottom: 1rem;
+          input {
+            padding: 8px 12px 8px 0;
+            margin-right: 1rem;
+            background: transparent;
+            color: white;
+            outline: 0;
+            border: 0;
+            border-bottom: 1px dashed $g-light-body;
+
+
+            &::placeholder {
+              color: $g-light-body;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#gameSection {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+
+
+  h2 {
+    color: whitesmoke;
+  }
+
+  .game-container {
+    position: relative;
+    margin: auto;
+    height: fit-content;
+
+    #statsBoard {
+      position: absolute;
+      top: 4rem;
+      left: -7rem;
+      text-align: right;
+
+      span {
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
+
+      #power {
+        color: chartreuse;
+      }
+
+      #stamina {
+        color: #ffdd53;
+      }
+
+      #health {
+        color: #c81d25;
+      }
+    }
+  }
+
+  #startVote {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .start-vote-inner {
+      display: flex;
+      flex-direction: column;
+      padding: 5rem 10rem;
+      background: $color;
+
+      p {
+        color: $g-light-body;
+        margin: 0.5rem 0;
+        font-weight: 300;
+      }
+
+      .user-count,
+      .vote-count {
+        margin: 0;
+        color: white;
+        font-size: 1.1rem;
+
+        span {
+          font-weight: 600;
+        }
+      }
+
+      .vote-count {
+        font-weight: 500;
+      }
+
+      button {
+        padding: 12px 32px;
+        margin: 1.5rem auto 0;
+        width: fit-content;
+        border: 0;
+        border-radius: 50px;
+        background-color: $accent-color;
+        color: white;
+        font-size: 1.3rem;
+
+        font-weight: 500;
+
+        &:hover {
+          background-color: darken($accent-color, 5%);
+        }
+
+        &:focus {
+          outline: 0;
+        }
+      }
+
+      .voted {
+        pointer-events: none;
+        cursor: not-allowed;
+        filter: grayscale(100%);
+        user-select: none;
+      }
+    }
+  }
+}
+
+
+@keyframes MoveUpDown {
+
+  0%,
+  100% {
+    bottom: 0;
+  }
+
+  50% {
+    bottom: 2rem;
+  }
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARENA</title>
+    <link rel="stylesheet" href="./assets/fonts/font.css">
+    <link rel="stylesheet" href="./assets/styles/main.css">
+    <style>
+      #gameScreen,
+      #gameSection,
+      #statsBoard {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main id="initialScreen">
+      <div class="welcome-screen">
+        <div class="welcome-screen__logo">
+          <h1>ARENA</h1>
+        </div>
+        <div class="welcome-screen__details">
+            <input type="text" placeholder="Username" id="usernameInput" maxlength="24" autofocus />
+          <div class="welcome-screen__details__bottom">
+            <div class="form-group">
+              <input type="text" placeholder="Enter game code" id="gameCodeInput" maxlength="5" />
+              <button type="submit" class="c-button join-button" id="joinGameButton">Join Game</button>
+            </div>
+            <button type="submit" class="c-button creategame-button" id="newGameButton">Create New Game</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+    <section id="gameSection">
+      <div id="startVote">
+        <div class="start-vote-inner">
+          <p>Wait for other users to join</p>
+          <p class="user-count">#<span id="userCount">x</span> users in room.</p>
+          <p class="vote-count">Votes: <span id="voteCount"></span></p>
+          <button id="voteButton">Start</button>
+        </div>
+      </div>
+      <div id="gameScreen" class="game-container">
+        <div id="statsBoard">
+          <p>Power: <span id="power">0</span></p>
+          <p>Stamina: <span id="stamina">0</span></p>
+          <p>Health: <span id="health">0</span></p>
+        </div>
+        <div>
+          <h2>Your game code is: <span id="gameCodeDisplay"></span></h2>
+          <canvas id="canvas"></canvas>
+        </div>
+      </div>
+
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.0/socket.io.js"></script>
+    <script src="./assets/js/app.js"></script>
+  </body>
+
+</html>
