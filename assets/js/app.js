@@ -170,7 +170,6 @@ const joinGame = () => {
     alert('Please enter your username');
   } else {
     socket.emit('joinGame', code, username);
-    init();
   }
 };
 
@@ -212,6 +211,15 @@ const handleVoteCount = (vote) => {
   voteCount.innerText = `${currentVoteCount}/${playerCount}`;
 };
 
+const handleJoin = (joined) => {
+  if (joined) {
+    init();
+  } else {
+    alert('Game already started');
+    reset();
+  }
+};
+
 const reset = () => {
   playerNumber = null;
   gameCodeInput.value = '';
@@ -240,3 +248,4 @@ socket.on('unknownCode', handleUnknownCode);
 socket.on('tooManyPlayers', handleTooManyPlayers);
 socket.on('numClients', handlePlayerCount);
 socket.on('voteCount', handleVoteCount);
+socket.on('joined', handleJoin);
