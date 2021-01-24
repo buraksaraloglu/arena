@@ -90,13 +90,32 @@ const paintPlayer = (playerState, size, color) => {
     ctx.fillStyle = color;
     ctx.fillRect(player.x * size, player.y * size, size, size);
 
+    // Print health container
+    ctx.fillStyle = 'gray';
+    ctx.fillRect(player.x * size - 17, player.y * size - 12, 49, 8);
+
+    const barConstant = 2.2727272727272727272727272727273;
+    // Print health bar
+    ctx.fillStyle = 'red';
+    ctx.fillRect(
+      player.x * size - 14,
+      player.y * size - 10,
+      44 - (44 - playerStats.health / barConstant),
+      4
+    );
+
+    const nameConstant =
+      playerState.username.length === 1
+        ? 0
+        : playerState.username.length * 4 - 4;
+
     // Print username
     ctx.font = '16px Arial';
     ctx.fillStyle = 'white';
     ctx.fillText(
       playerState.username,
-      player.x * size - 10,
-      player.y * size - 5
+      player.x * size + 4 - nameConstant,
+      player.y * size + 34
     );
   }
 };

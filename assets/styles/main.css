@@ -299,6 +299,7 @@ main .welcome-screen__logo h1 {
   font-size: 3rem;
   color: gold;
   font-family: 'PressStart2P-Regular', sans-serif;
+  letter-spacing: 0.06em;
   -webkit-filter: drop-shadow(3px 3px 0 #916b03);
           filter: drop-shadow(3px 3px 0 #916b03);
   -webkit-animation: MoveUpDown 2s ease-in-out infinite;

@@ -50,12 +50,11 @@ main {
       h1 {
         position: absolute;
         bottom: 0;
-
         padding: 1rem 2rem;
-
         font-size: 3rem;
         color: $main-yellow;
         font-family: 'PressStart2P-Regular', sans-serif;
+        letter-spacing: 0.06em;
         filter: drop-shadow(3px 3px 0 #916b03);
         animation: MoveUpDown 2s ease-in-out infinite;
 
