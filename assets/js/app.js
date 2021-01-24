@@ -89,6 +89,15 @@ const paintPlayer = (playerState, size, color) => {
   if (playerState.alive) {
     ctx.fillStyle = color;
     ctx.fillRect(player.x * size, player.y * size, size, size);
+
+    // Print username
+    ctx.font = '16px Arial';
+    ctx.fillStyle = 'white';
+    ctx.fillText(
+      playerState.username,
+      player.x * size - 10,
+      player.y * size - 5
+    );
   }
 };
 
