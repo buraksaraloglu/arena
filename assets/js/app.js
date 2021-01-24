@@ -43,7 +43,7 @@ const init = () => {
   canvas = document.getElementById('canvas');
   ctx = canvas.getContext('2d');
 
-  canvas.width = canvas.height = 512;
+  canvas.width = canvas.height = 768;
 
   ctx.fillStyle = '#8f151b';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
