@@ -4,7 +4,7 @@ const FOOD_COLOR = '#e66916';
 
 let canvas, ctx;
 
-const socket = io('http://localhost:8080');
+const socket = io('https://arena-bs.herokuapp.com');
 
 const gameSection = document.getElementById('gameSection');
 const gameScreen = document.getElementById('gameScreen');
