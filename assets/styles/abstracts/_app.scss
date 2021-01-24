@@ -3,7 +3,7 @@ $main-yellow: gold;
 $accent-color: #c81d25;
 $sec-accent-color: #0073cc;
 
-$g-light-body: #495057;
+$g-light-body: #6a6f75;
 
 $g-padding: 12px 20px;
 
@@ -16,10 +16,14 @@ $g-padding: 12px 20px;
   }
 }
 
+html,
+body {
+  background: #02040f;
+}
+
 body {
   font-family: 'Roboto', 'Montserrat', 'Arial', sans-serif;
   color: $g-light-body;
-  background: $color;
 }
 
 p {
@@ -67,8 +71,9 @@ main {
       flex-direction: column;
       justify-content: center;
       padding: 2rem;
-      background: rgba(10, 10, 10, 0.7);
-      border-radius: 20px;
+      background: #090c1a;
+      border-radius: 10px;
+
       #usernameInput {
         padding: 8px 12px 8px 0;
         background: transparent;
@@ -76,6 +81,10 @@ main {
         outline: 0;
         border: 0;
         border-bottom: 1px solid $g-light-body;
+
+        &:focus {
+          border-color: $background;
+        }
 
         &::placeholder {
           color: $g-light-body;
@@ -100,10 +109,9 @@ main {
           border: 1px solid $main-yellow;
           transition: all 0.3s ease;
 
-          &:hover {
+          &:hover,
+          &:focus {
             color: $color;
-            background: $main-yellow;
-
           }
 
           &:focus {
@@ -119,7 +127,8 @@ main {
           border-radius: 4px;
           width: 100%;
 
-          &:hover {
+          &:hover,
+          &:focus {
             color: white;
             background-color: darken($accent-color, 10%);
           }
@@ -136,13 +145,15 @@ main {
           border-radius: 4px;
           border-color: $sec-accent-color;
 
-          &:hover {
+          &:hover,
+          &:focus {
             background: $sec-accent-color;
           }
         }
 
         .form-group {
           margin-bottom: 1rem;
+
           input {
             padding: 8px 12px 8px 0;
             margin-right: 1rem;
@@ -152,6 +163,9 @@ main {
             border: 0;
             border-bottom: 1px dashed $g-light-body;
 
+            &:focus {
+              border-color: $background;
+            }
 
             &::placeholder {
               color: $g-light-body;
@@ -181,7 +195,7 @@ main {
     #statsBoard {
       position: absolute;
       top: 4rem;
-      left: -7rem;
+      left: -7.5rem;
       text-align: right;
 
       span {
@@ -206,13 +220,12 @@ main {
   #startVote {
     display: flex;
     align-items: center;
-    justify-content: center;
 
     .start-vote-inner {
       display: flex;
       flex-direction: column;
-      padding: 5rem 10rem;
-      background: $color;
+      margin: auto 2rem;
+      justify-content: flex-start;
 
       p {
         color: $g-light-body;
@@ -222,9 +235,8 @@ main {
 
       .user-count,
       .vote-count {
-        margin: 0;
+        margin: .25rem 0;
         color: white;
-        font-size: 1.1rem;
 
         span {
           font-weight: 600;
@@ -232,13 +244,14 @@ main {
       }
 
       .vote-count {
+        font-size: 1.4rem;
         font-weight: 500;
       }
 
       button {
         padding: 12px 32px;
-        margin: 1.5rem auto 0;
-        width: fit-content;
+        margin: 1.5rem auto ;
+        width: 100%;
         border: 0;
         border-radius: 50px;
         background-color: $accent-color;

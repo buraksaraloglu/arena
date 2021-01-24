@@ -45,7 +45,7 @@ const init = () => {
 
   canvas.width = canvas.height = 512;
 
-  ctx.fillStyle = 'brown';
+  ctx.fillStyle = '#8f151b';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   ctx.font = '2rem Arial';
@@ -71,9 +71,9 @@ const paintGame = (state) => {
 
   const playerColors = [PLAYER_COLOR, 'red', 'yellow', 'blue'];
 
-  for (let i = 0; i < playerCount; i++) {
-    paintPlayer(state.players[i], size, playerColors[i]);
-  }
+  state.players.map((player, index) => {
+    paintPlayer(player, size, playerColors[index]);
+  });
 };
 
 const paintPlayer = (playerState, size, color) => {
@@ -86,8 +86,10 @@ const paintPlayer = (playerState, size, color) => {
     staminaText.innerText = playerStats.stamina;
   }
 
-  ctx.fillStyle = color;
-  ctx.fillRect(player.x * size, player.y * size, size, size);
+  if (playerState.alive) {
+    ctx.fillStyle = color;
+    ctx.fillRect(player.x * size, player.y * size, size, size);
+  }
 };
 
 const handleInit = (number) => {
@@ -152,11 +154,13 @@ const handleGameOver = (data) => {
 
   gameActive = false;
 
-  if (data.winner === playerNumber) {
+  if (data.winner.id === playerNumber) {
     alert('You Win!');
   } else {
-    alert('You Lose :(');
+    alert(`You Lose :( Winner is: ${data.winner.username}`);
   }
+
+  reset();
 };
 
 const handleUnknownCode = () => {

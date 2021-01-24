@@ -237,19 +237,23 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 *::-moz-selection {
-  color: #495057;
+  color: #6a6f75;
   background-color: gold;
 }
 
 *::selection {
-  color: #495057;
+  color: #6a6f75;
   background-color: gold;
+}
+
+html,
+body {
+  background: #02040f;
 }
 
 body {
   font-family: 'Roboto', 'Montserrat', 'Arial', sans-serif;
-  color: #495057;
-  background: #000;
+  color: #6a6f75;
 }
 
 p {
@@ -319,8 +323,8 @@ main .welcome-screen__details {
       -ms-flex-pack: center;
           justify-content: center;
   padding: 2rem;
-  background: rgba(10, 10, 10, 0.7);
-  border-radius: 20px;
+  background: #090c1a;
+  border-radius: 10px;
 }
 
 main .welcome-screen__details #usernameInput {
@@ -329,23 +333,27 @@ main .welcome-screen__details #usernameInput {
   color: white;
   outline: 0;
   border: 0;
-  border-bottom: 1px solid #495057;
+  border-bottom: 1px solid #6a6f75;
+}
+
+main .welcome-screen__details #usernameInput:focus {
+  border-color: #fff;
 }
 
 main .welcome-screen__details #usernameInput::-webkit-input-placeholder {
-  color: #495057;
+  color: #6a6f75;
 }
 
 main .welcome-screen__details #usernameInput:-ms-input-placeholder {
-  color: #495057;
+  color: #6a6f75;
 }
 
 main .welcome-screen__details #usernameInput::-ms-input-placeholder {
-  color: #495057;
+  color: #6a6f75;
 }
 
 main .welcome-screen__details #usernameInput::placeholder {
-  color: #495057;
+  color: #6a6f75;
 }
 
 main .welcome-screen__details__bottom {
@@ -378,9 +386,8 @@ main .welcome-screen__details__bottom .c-button {
   transition: all 0.3s ease;
 }
 
-main .welcome-screen__details__bottom .c-button:hover {
+main .welcome-screen__details__bottom .c-button:hover, main .welcome-screen__details__bottom .c-button:focus {
   color: #000;
-  background: gold;
 }
 
 main .welcome-screen__details__bottom .c-button:focus {
@@ -396,7 +403,7 @@ main .welcome-screen__details__bottom .creategame-button {
   width: 100%;
 }
 
-main .welcome-screen__details__bottom .creategame-button:hover {
+main .welcome-screen__details__bottom .creategame-button:hover, main .welcome-screen__details__bottom .creategame-button:focus {
   color: white;
   background-color: #9b171d;
 }
@@ -415,7 +422,7 @@ main .welcome-screen__details__bottom .join-button {
   border-color: #0073cc;
 }
 
-main .welcome-screen__details__bottom .join-button:hover {
+main .welcome-screen__details__bottom .join-button:hover, main .welcome-screen__details__bottom .join-button:focus {
   background: #0073cc;
 }
 
@@ -430,23 +437,27 @@ main .welcome-screen__details__bottom .form-group input {
   color: white;
   outline: 0;
   border: 0;
-  border-bottom: 1px dashed #495057;
+  border-bottom: 1px dashed #6a6f75;
+}
+
+main .welcome-screen__details__bottom .form-group input:focus {
+  border-color: #fff;
 }
 
 main .welcome-screen__details__bottom .form-group input::-webkit-input-placeholder {
-  color: #495057;
+  color: #6a6f75;
 }
 
 main .welcome-screen__details__bottom .form-group input:-ms-input-placeholder {
-  color: #495057;
+  color: #6a6f75;
 }
 
 main .welcome-screen__details__bottom .form-group input::-ms-input-placeholder {
-  color: #495057;
+  color: #6a6f75;
 }
 
 main .welcome-screen__details__bottom .form-group input::placeholder {
-  color: #495057;
+  color: #6a6f75;
 }
 
 #gameSection {
@@ -475,7 +486,7 @@ main .welcome-screen__details__bottom .form-group input::placeholder {
 #gameSection .game-container #statsBoard {
   position: absolute;
   top: 4rem;
-  left: -7rem;
+  left: -7.5rem;
   text-align: right;
 }
 
@@ -503,9 +514,6 @@ main .welcome-screen__details__bottom .form-group input::placeholder {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 
 #gameSection #startVote .start-vote-inner {
@@ -516,21 +524,22 @@ main .welcome-screen__details__bottom .form-group input::placeholder {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 5rem 10rem;
-  background: #000;
+  margin: auto 2rem;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 #gameSection #startVote .start-vote-inner p {
-  color: #495057;
+  color: #6a6f75;
   margin: 0.5rem 0;
   font-weight: 300;
 }
 
 #gameSection #startVote .start-vote-inner .user-count,
 #gameSection #startVote .start-vote-inner .vote-count {
-  margin: 0;
+  margin: .25rem 0;
   color: white;
-  font-size: 1.1rem;
 }
 
 #gameSection #startVote .start-vote-inner .user-count span,
@@ -539,15 +548,14 @@ main .welcome-screen__details__bottom .form-group input::placeholder {
 }
 
 #gameSection #startVote .start-vote-inner .vote-count {
+  font-size: 1.4rem;
   font-weight: 500;
 }
 
 #gameSection #startVote .start-vote-inner button {
   padding: 12px 32px;
-  margin: 1.5rem auto 0;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  margin: 1.5rem auto;
+  width: 100%;
   border: 0;
   border-radius: 50px;
   background-color: #c81d25;
