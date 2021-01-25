@@ -233,8 +233,11 @@ const reset = () => {
   gameActive = false;
   currentStatus = 'Waiting...';
   gameCodeInput.value = '';
+  voteButton.classList.remove('voted');
   gameSection.style.display = 'none';
+  statsBoard.style.display = 'none';
   initialScreen.style.display = 'block';
+  startVoteScreen.style.display = 'flex';
 };
 
 voteButton.addEventListener('click', () => {
