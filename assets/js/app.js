@@ -206,7 +206,7 @@ const handleUnknownCode = () => {
 
 const handleTooManyPlayers = () => {
   reset();
-  alert('This game is already in progress');
+  alert('This room is full');
 };
 
 const handlePlayerCount = (numClients) => {
