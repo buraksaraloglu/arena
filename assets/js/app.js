@@ -229,6 +229,9 @@ const handleJoin = (joined) => {
 
 const reset = () => {
   playerNumber = null;
+  roomName = null;
+  gameActive = false;
+  currentStatus = 'Waiting...';
   gameCodeInput.value = '';
   gameSection.style.display = 'none';
   initialScreen.style.display = 'block';
