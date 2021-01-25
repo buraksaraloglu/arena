@@ -25,6 +25,8 @@ const userCount = document.getElementById('userCount');
 const voteCount = document.getElementById('voteCount');
 const voteButton = document.getElementById('voteButton');
 
+const playerColors = [PLAYER_COLOR, 'red', 'yellow', 'blue'];
+
 let roomName;
 let playerNumber;
 let playerCount;
@@ -35,7 +37,7 @@ const handleKeyDown = (e) => {
   socket.emit('keydown', e.keyCode);
 };
 
-const init = () => {
+const init = (state) => {
   initialScreen.style.display = 'none';
   gameSection.style.display = 'flex';
   gameScreen.style.display = 'inherit';
@@ -45,19 +47,26 @@ const init = () => {
 
   canvas.width = canvas.height = 640;
 
-  ctx.fillStyle = '#8f151b';
+  const gridSize = state.gridSize;
+  const size = canvas.width / gridSize;
+
+  ctx.fillStyle = BG_COLOR;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   ctx.font = '2rem Arial';
   ctx.fillStyle = 'white';
   ctx.fillText(currentStatus, 40, canvas.height / 2);
 
-  document.addEventListener('keydown', handleKeyDown);
+  state.players.map((player, index) => {
+    paintPlayer(player, size, playerColors[index]);
+  });
   gameActive = false;
 };
 
 const paintGame = (state) => {
   statsBoard.style.display = 'block';
+
+  document.addEventListener('keydown', handleKeyDown);
 
   ctx.fillStyle = BG_COLOR;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -68,8 +77,6 @@ const paintGame = (state) => {
 
   ctx.fillStyle = FOOD_COLOR;
   ctx.fillRect(food.x * size, food.y * size, size, size);
-
-  const playerColors = [PLAYER_COLOR, 'red', 'yellow', 'blue'];
 
   state.players.map((player, index) => {
     paintPlayer(player, size, playerColors[index]);
@@ -124,12 +131,15 @@ const handleInit = (number) => {
   playerNumber = number;
 };
 
+let serverGameState;
+
 const handleGameState = (gameState) => {
+  serverGameState = JSON.parse(gameState);
   if (!gameActive) {
+    init(serverGameState);
     return;
   }
 
-  const serverGameState = JSON.parse(gameState);
   requestAnimationFrame(() => paintGame(serverGameState));
 };
 
@@ -143,7 +153,7 @@ const handleGameStatus = (gameStatus) => {
       startVoteScreen.style.display = 'none';
     }
     currentStatus = `Starting in ${gameStatus}`;
-    init();
+    init(serverGameState);
   }
 };
 const handleGameCode = (gameCode) => {
@@ -157,7 +167,6 @@ const newGame = () => {
     alert('Please enter your username');
   } else {
     socket.emit('newGame', username);
-    init();
   }
 };
 
@@ -212,9 +221,7 @@ const handleVoteCount = (vote) => {
 };
 
 const handleJoin = (joined) => {
-  if (joined) {
-    init();
-  } else {
+  if (!joined) {
     alert('Game already started');
     reset();
   }
